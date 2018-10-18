@@ -67,13 +67,13 @@ p {
 	<div id = "a" style="display:none;">
 	<p><h1>Want to be safe????.</h1></p>
 	<a href = "https://www.wikihow.com/React-During-an-Earthquake">
-<button onclick="open_win()" class = "button" ><h3><span>Click here</span></h3></button>
+<button class = "button" ><h3><span>Click here</span></h3></button>
 	</a>
 </div>
 	</center>
 <script>
 var x = document.getElementById("demo");
-var reigoncode;
+
 function getLocation() {
 	toggle_visibility('a');
     if (navigator.geolocation) {
@@ -103,15 +103,16 @@ else{
 }
 else{
  x.innerHTML +=" Central India"	;
-}}
-function open_win(){
-	if(x.innerHTML==" Northern India"){
-	x.innerHTML += ": your life is under a constant threat from earthquakes and floods!!!!";}
-
-	    window.open("https://www.wikihow.com/Survive-an-Earthquake");
-    window.open("https://www.wikihow.com/Survive-a-Flood");
 }
-</script>
 
-</body>
+	if(x.innerHTML==" Northern India"){
+	
+	x.innerHTML += ": your life is under a constant threat from earthquakes and floods!!!!";}
+}
+	if(x.innerHTML=="North Eastern"){
+	 x.innerHTML+=":yor life is under a constant threat from earthquakes,flood and landslide!!!!";}
+	}	
+
+	if(x.innerHTML=="south eastern"){
+	x.innerHTML+=":your life is under a constant threat from cyclone and flood!!!!";){
 </html>
