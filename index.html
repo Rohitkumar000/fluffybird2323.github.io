@@ -1,22 +1,20 @@
 <html>
-	<head><style>
-		body {
+    <head><style>
+        body {
     background-color: lightblue;
 }
-
 h1 {
     color: white;
     text-align: center;
 }
-
 p {
     font-family: verdana;
     font-size: 26px;
-	text-align: center;
+    text-align: center;
 }
-		button {
-			background-color: #64EDC6;
-			 border: none;
+        button {
+            background-color: #64EDC6;
+             border: none;
                           color: white;
                           padding: 15px 32px;
                             text-align: center;
@@ -25,17 +23,16 @@ p {
                               font-size: 16px;
                                 margin: 4px 2px;
                                 cursor: pointer;
-			border-radius: 8px;
-			display: block;
-		}
-		
+            border-radius: 8px;
+            display: block;
+        }
+        
 .button span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
-
 .button span:after {
   content: '\00bb';
   position: absolute;
@@ -44,71 +41,155 @@ p {
   right: -20px;
   transition: 0.5s;
 }
-
 .button:hover span {
   padding-right: 25px;
 }
-
 .button:hover span:after {
   opacity: 1;
   right: 0;
 }
 </style>
-	</head>
+    </head>
 <body >
 
 <p><h1>Click the button to get your Reigon.</h1></p>
 <center>
 <button class = "button" onclick="getLocation()"><h3><span>Try It Now</span></h3></button>
-	
+    
 
 <p id="demo"></p>
-	
-	<div id = "a" style="display:none;">
-	<p><h1>Want to be safe????.</h1></p>
-	<a href = "https://www.wikihow.com/React-During-an-Earthquake">
-<button class = "button" ><h3><span>Click here</span></h3></button>
-	</a>
+    <div id = "a" style="display:none;">
+    <p><h1>Want to be safe????.</h1></p>
+<button class = "button" onclick="openwin()"><h3><span>Click here</span></h3></button>
 </div>
-	</center>
+    </center>
 <script>
+    alert("if possible Use incognito/ Private mode and allow location access for proper functioning of the Website :)");
 var x = document.getElementById("demo");
-
+    var reigoncode ;
 function getLocation() {
-	toggle_visibility('a');
+    toggle_visibility('a');
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else { 
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
-	function toggle_visibility(id) {
+    function toggle_visibility(id) {
        var e = document.getElementById(id);
        if(e.style.display == 'block')
           e.style.display = 'none';
        else
           e.style.display = 'block';
    }
-
-
 function showPosition(position) {
-	if(position.coords.latitude>26||position.coords.latitude<21){
+    alert("Hold on.... it may take some time to Load till then : Did you know that The National Earthquake Information Center (NEIC) records an average of 20,000 earthquakes every year (about 50 a day) around the world. There are, however, millions of earthquakes estimated to occur every year that are too weak to be recorded. ");
+    if(position.coords.latitude>26||position.coords.latitude<21){
     x.innerHTML +=(position.coords.latitude>26)?(" North"):(" South")   ;
-    	if(position.coords.longitude>85||position.coords.longitude<74){
+        if(position.coords.longitude>85||position.coords.longitude<74){
     x.innerHTML +=(position.coords.latitude>85)?(" Eastern India"):(" Western India")   ;
 }
 else{
-	x.innerHTML += "ern India";
+    x.innerHTML += "ern India";
 }
 }
 else{
- x.innerHTML +=" Central India"	;
+ x.innerHTML +=" Central India" ;
 }
+reigoncode = setcode();
+ navigator.geolocation.getCurrentPosition(getDis);  
+}
+    function setcode(){
+var code;
+        if(x.innerHTML==" Northern India"){
+            code = 1;
+return code;}
+        else if(x.innerHTML==" North Eastern India"){
+            code = 2;
+return code;}
+        else if(x.innerHTML==" North Western India"){
+            code = 0;
+return code;}
+        else if(x.innerHTML==" Central India"){
+            code = 3;
+return code;}
+        else if(x.innerHTML==" South Western India"){
+            code = 4;
+return code;}
+        else if(x.innerHTML==" South India"){
+            code = 5;
+return code;}
+        else if(x.innerHTML==" South Eastern India"){
+            code = 6;
+return code;}
+           
+    }
+    function getDis(position){
+    if(x.innerHTML==" Northern India" && !(151*(position.coords.latitude)+125*(position.coords.longitude)-14273)>0 ){
+    
+    x.innerHTML += ": your life is under a constant threat from earthquakes, landslides and floods!!!!";
+reigoncode = 7;}
+else if(x.innerHTML==" Northern India"){
+    x.innerHTML+=": your life is under a constant threat from earthquakes and floods!!!!";}    
+else if(x.innerHTML==" North Eastern India"){
+     x.innerHTML+=": your life is under a constant threat from earthquakes,flood and landslide!!!!";}
+    else if(x.innerHTML==" South Eastern India"){
+    x.innerHTML+=":your life is under a constant threat from cyclones and floods!!!!";}
+    else if(x.innerHTML==" Southern India"){
+    x.innerHTML+=":your life is under a constant threat from cyclones and floods!!!!";}  
+       else if(x.innerHTML==" Eastern India"){
+    x.innerHTML+=":your life is under a constant threat from eartquakes,landslide and floods!!!!";}
+       else if(x.innerHTML==" Western India"){
+    x.innerHTML+=":your life is under a constant threat from landslide and floods!!!!";}
+          else if(x.innerHTML==" North western India"){
+    x.innerHTML+=":your life is under a constant threat from landslide & floods and Droughts!!!!";} 
+          else if(x.innerHTML==" South Western India"){
+     x.innerHTML+=":your life is under a constant threat from landslide and floods!!!!";}
+    else if(x.innerHTML==" Central India"){
+     x.innerHTML+=": your life is under a constant threat from earthquakes, floods and Droughts!!!!";}
+    }
+    function openwin(){
+    if(reigoncode == "1"){
+     window.open("earthquake.pdf");
+        window.open("flood.pdf");
+    }
+     else if(reigoncode == "7"){
+     window.open("earthquake.pdf");
+        window.open("flood.pdf");
+         window.open("landslides.pdf");
+    }
+             else if(reigoncode == "6"){
+        window.open("flood.pdf");
+         window.open("Cyclone.pdf");
+             }
+        
+        else if(reigoncode == "5"){
+        window.open("flood.pdf");
+         window.open("Cyclone.pdf");
+        }
+           else if(reigoncode == "4"){
+        window.open("flood.pdf");
+         window.open("landslides.pdf");
+        }
+             else if(reigoncode == "3"){
+        window.open("flood.pdf");
+         window.open("earthquake.pdf");
+                  window.open("Droughts.pdf");}
+         else if(reigoncode == "2"){
+        window.open("flood.pdf");
+         window.open("earthquake.pdf");
+                  window.open("landslides.pdf");}
+  else if(reigoncode == "1"){
+        window.open("flood.pdf");
+         window.open("earthquake.pdf");}
+          
+        else if(reigoncode == "0"){
+        window.open("flood.pdf");
+         window.open("earthquake.pdf");
+                  window.open("Droughts.pdf");}
 
-	if(x.innerHTML==" Northern India"){
-	
-	x.innerHTML += ": your life is under a constant threat from earthquakes and floods!!!!";}
-}
+    }
 </script>
 
 </body>
